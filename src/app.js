@@ -3,6 +3,7 @@ dotenv.config();
 
 import express from "express";
 import userRoutes from "./routes/user.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 import { logger } from "./middlewares/logger.middleware.js";
 import connectDB from "./config/db.js";
 
@@ -17,6 +18,7 @@ app.use(logger);
 
 // Routes
 app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
 // Start server
 app.listen(PORT, () => {
