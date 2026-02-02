@@ -5,6 +5,7 @@ import express from "express";
 import userRoutes from "./routes/user.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import { logger } from "./middlewares/logger.middleware.js";
+import { errorHandler } from "./middlewares/error.middleware.js";
 import connectDB from "./config/db.js";
 
 connectDB();
@@ -19,6 +20,8 @@ app.use(logger);
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+
+app.use(errorHandler);
 
 // Start server
 app.listen(PORT, () => {
