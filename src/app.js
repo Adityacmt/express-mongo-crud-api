@@ -7,6 +7,7 @@ import authRoutes from "./routes/auth.routes.js";
 import { logger } from "./middlewares/logger.middleware.js";
 import { errorHandler } from "./middlewares/error.middleware.js";
 import connectDB from "./config/db.js";
+import cors from "cors";
 
 connectDB();
 
@@ -16,6 +17,8 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(logger);
+
+app.use(cors());
 
 // Routes
 app.use("/api/users", userRoutes);
