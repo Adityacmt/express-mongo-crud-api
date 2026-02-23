@@ -20,6 +20,10 @@ app.use(logger);
 
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
